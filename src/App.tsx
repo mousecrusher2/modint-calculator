@@ -1,48 +1,129 @@
 import { useState } from "react";
-import { invoke } from "@tauri-apps/api/core";
+import {
+  EqualButton,
+  MinusButton,
+  MulButton,
+  OneNineButton,
+  PlusButton,
+  ZeroButton,
+  ModSwitchButton,
+  ClearButton,
+  DivButton,
+} from "./components/pad";
+import { Display } from "./components/display";
+import { Mod } from "./modulo";
+import { Operation } from "./calc";
 
 function App() {
-  const [greetMsg, setGreetMsg] = useState("");
-  const [name, setName] = useState("");
-
-  async function greet() {
-    // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-    setGreetMsg(await invoke("greet", { name }));
-  }
-
+  const [state, setState] = useState("0");
+  const [mod, setMod] = useState(Mod.Mod998244353);
+  const [lhs, setLhs] = useState("");
+  const [op, setOp] = useState(undefined as undefined | Operation);
   return (
-    <div className="container">
-      <h1>Welcome to Tauri!</h1>
-
-      <div className="row">
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src="/vite.svg" className="logo vite" alt="Vite logo" />
-        </a>
-        <a href="https://tauri.app" target="_blank" rel="noreferrer">
-          <img src="/tauri.svg" className="logo tauri" alt="Tauri logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank" rel="noreferrer">
-        </a>
+    <div className="fill">
+      <div className="dispblock">
+        <Display s={state} />
       </div>
-
-      <p>Click on the Tauri, Vite, and React logos to learn more.</p>
-
-      <form
-        className="row"
-        onSubmit={(e) => {
-          e.preventDefault();
-          greet();
-        }}
-      >
-        <input
-          id="greet-input"
-          onChange={(e) => setName(e.currentTarget.value)}
-          placeholder="Enter a name..."
-        />
-        <button type="submit">Greet</button>
-      </form>
-
-      <p>{greetMsg}</p>
+      <div className="padarea">
+        <table className="tb">
+          <tbody>
+            <tr>
+              <td colSpan={2} className="cell">
+                <ModSwitchButton mod={mod} setMod={setMod} />
+              </td>
+              <td className="cell">
+                <ClearButton
+                  setLhs={setLhs}
+                  setState={setState}
+                  setOp={setOp}
+                />
+              </td>
+              <td className="cell">
+                <DivButton
+                  lhs={lhs}
+                  setLhs={setLhs}
+                  state={state}
+                  setState={setState}
+                  op={op}
+                  setOp={setOp}
+                  mod={mod}
+                />
+              </td>
+            </tr>
+            {[1, 4, 7].map((n) => (
+              <tr key={n}>
+                {[n, n + 1, n + 2].map((m) => (
+                  <td key={m} className="cell">
+                    <OneNineButton n={m} setstate={setState} />
+                  </td>
+                ))}
+                {(() => {
+                  switch (n) {
+                    case 1:
+                      return (
+                        <td className="cell">
+                          <MulButton
+                            lhs={lhs}
+                            setLhs={setLhs}
+                            state={state}
+                            setState={setState}
+                            op={op}
+                            setOp={setOp}
+                            mod={mod}
+                          />
+                        </td>
+                      );
+                    case 4:
+                      return (
+                        <td className="cell">
+                          <MinusButton
+                            lhs={lhs}
+                            setLhs={setLhs}
+                            state={state}
+                            setState={setState}
+                            op={op}
+                            setOp={setOp}
+                            mod={mod}
+                          />
+                        </td>
+                      );
+                    case 7:
+                      return (
+                        <td className="cell">
+                          <PlusButton
+                            lhs={lhs}
+                            setLhs={setLhs}
+                            state={state}
+                            setState={setState}
+                            op={op}
+                            setOp={setOp}
+                            mod={mod}
+                          />
+                        </td>
+                      );
+                  }
+                })()}
+              </tr>
+            ))}
+            <tr>
+              <td colSpan={3} className="cell">
+                <ZeroButton setstate={setState} />
+              </td>
+              <td className="cell">
+                <EqualButton
+                  lhs={lhs}
+                  setLhs={setLhs}
+                  state={state}
+                  setState={setState}
+                  op={op}
+                  setOp={setOp}
+                  mod={mod}
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

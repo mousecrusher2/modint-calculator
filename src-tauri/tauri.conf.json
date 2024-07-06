@@ -13,7 +13,10 @@
       {
         "title": "modint-calculator",
         "width": 800,
-        "height": 600
+        "height": 600,
+        "minHeight": 200,
+        "minWidth": 200,
+        "dragDropEnabled": false
       }
     ],
     "security": {
@@ -23,9 +26,6 @@
   "bundle": {
     "active": true,
     "targets": "all",
-    "icon": [
-      "icons/128x128@2x.png",
-      "icons/icon.ico"
-    ]
+    "icon": ["icons/128x128@2x.png", "icons/icon.ico"]
   }
 }
