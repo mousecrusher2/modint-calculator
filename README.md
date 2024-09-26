@@ -1,7 +1,11 @@
-# Tauri + React + Typescript
+# ModInt-Calculator
 
-This template should help get you started developing with Tauri, React and Typescript in Vite.
+A simple calculator for modular arithmetic. It can calculate the sum, difference, product, and quotient of two numbers modulo a given modulus.
 
-## Recommended IDE Setup
+## Build
 
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+To build the calculator, run the following command in the root directory of the project:
+
+```bash
+npm run tauri build
+```
