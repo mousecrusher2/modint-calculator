@@ -7,5 +7,6 @@ A simple calculator for modular arithmetic. It can calculate the sum, difference
 To build the calculator, run the following command in the root directory of the project:
 
 ```bash
+npm install
 npm run tauri build
 ```
