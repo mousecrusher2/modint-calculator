@@ -72,7 +72,7 @@ export function EqualButton({
     if (!(op === undefined)) {
       const res = await calc({ op, lhs, rhs: state, modulo });
       setLhs("");
-      setState(res);
+      setState(res.toString());
       setOp(undefined);
     }
   };
@@ -110,7 +110,7 @@ export function PlusButton({
       setOp("Add");
     } else {
       const res = await calc({ op, lhs, rhs: state, modulo });
-      setLhs(res);
+      setLhs(res.toString());
       setState("0");
       setOp("Add");
     }
@@ -149,7 +149,7 @@ export function MinusButton({
       setOp("Subtract");
     } else {
       const res = await calc({ op, lhs, rhs: state, modulo });
-      setLhs(res);
+      setLhs(res.toString());
       setState("0");
       setOp("Subtract");
     }
@@ -188,7 +188,7 @@ export function MulButton({
       setOp("Multiply");
     } else {
       const res = await calc({ op, lhs, rhs: state, modulo });
-      setLhs(res);
+      setLhs(res.toString());
       setState("0");
       setOp("Multiply");
     }
@@ -227,7 +227,7 @@ export function DivButton({
       setOp("Divide");
     } else {
       const res = await calc({ op, lhs, rhs: state, modulo });
-      setLhs(res);
+      setLhs(res.toString());
       setState("0");
       setOp("Divide");
     }

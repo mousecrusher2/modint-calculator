@@ -12,7 +12,7 @@
     "windows": [
       {
         "title": "modint-calculator",
-        "width": 800,
+        "width": 400,
         "height": 600,
         "minHeight": 200,
         "minWidth": 200,
