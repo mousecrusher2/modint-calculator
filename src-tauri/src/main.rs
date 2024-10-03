@@ -52,7 +52,6 @@ fn internal_calc<M: Modulus>(op: Operation, lhs: StaticModInt<M>, rhs: StaticMod
 
 fn main() {
     tauri::Builder::default()
-        .plugin(tauri_plugin_shell::init())
         .invoke_handler(tauri::generate_handler![greet, calc])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

@@ -62,5 +62,5 @@ body {
 }
 
 .cell {
-    padding: min(1.5vw, 0.5vh);
+    padding: min(0.5vw, 0.5vh);
 }
