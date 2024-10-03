@@ -1,8 +1,7 @@
 import { invoke } from "@tauri-apps/api/core";
+import { Mod } from "./modulo";
 
 export type Operation = "Add" | "Subtract" | "Multiply" | "Divide";
-type Modulo = "Mod998244353" | "Mod1000000007";
-
-export async function calc({ op, lhs, rhs, modulo }: { op: Operation; lhs: string; rhs: string; modulo: Modulo }): Promise<string> {
-  return await invoke("calc", { op, lhs, rhs, modulo });
+export async function calc({ op, lhs, rhs, mod }: { op: Operation; lhs: string; rhs: string; mod: Mod }): Promise<string> {
+  return await invoke("calc", { op, lhs, rhs, modulo: mod });
 }

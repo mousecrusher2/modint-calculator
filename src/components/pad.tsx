@@ -67,10 +67,9 @@ export function EqualButton({
   setOp: React.Dispatch<React.SetStateAction<undefined | Operation>>;
   mod: Mod;
 }) {
-  const modulo = mod === Mod.Mod998244353 ? "Mod998244353" : "Mod1000000007";
   const onclick = async () => {
     if (!(op === undefined)) {
-      const res = await calc({ op, lhs, rhs: state, modulo });
+      const res = await calc({ op, lhs, rhs: state, mod });
       setLhs("");
       setState(res.toString());
       setOp(undefined);
@@ -100,7 +99,6 @@ export function PlusButton({
   setOp: React.Dispatch<React.SetStateAction<undefined | Operation>>;
   mod: Mod;
 }) {
-  const modulo = mod === Mod.Mod998244353 ? "Mod998244353" : "Mod1000000007";
   const onclick = async () => {
     if (op === undefined) {
       setState((state) => {
@@ -109,7 +107,7 @@ export function PlusButton({
       });
       setOp("Add");
     } else {
-      const res = await calc({ op, lhs, rhs: state, modulo });
+      const res = await calc({ op, lhs, rhs: state, mod });
       setLhs(res.toString());
       setState("0");
       setOp("Add");
@@ -139,7 +137,6 @@ export function MinusButton({
   setOp: React.Dispatch<React.SetStateAction<undefined | Operation>>;
   mod: Mod;
 }) {
-  const modulo = mod === Mod.Mod998244353 ? "Mod998244353" : "Mod1000000007";
   const onclick = async () => {
     if (op === undefined) {
       setState((state) => {
@@ -148,7 +145,7 @@ export function MinusButton({
       });
       setOp("Subtract");
     } else {
-      const res = await calc({ op, lhs, rhs: state, modulo });
+      const res = await calc({ op, lhs, rhs: state, mod });
       setLhs(res.toString());
       setState("0");
       setOp("Subtract");
@@ -178,7 +175,6 @@ export function MulButton({
   setOp: React.Dispatch<React.SetStateAction<undefined | Operation>>;
   mod: Mod;
 }) {
-  const modulo = mod === Mod.Mod998244353 ? "Mod998244353" : "Mod1000000007";
   const onclick = async () => {
     if (op === undefined) {
       setState((state) => {
@@ -187,7 +183,7 @@ export function MulButton({
       });
       setOp("Multiply");
     } else {
-      const res = await calc({ op, lhs, rhs: state, modulo });
+      const res = await calc({ op, lhs, rhs: state, mod });
       setLhs(res.toString());
       setState("0");
       setOp("Multiply");
@@ -217,7 +213,6 @@ export function DivButton({
   setOp: React.Dispatch<React.SetStateAction<undefined | Operation>>;
   mod: Mod;
 }) {
-  const modulo = mod === Mod.Mod998244353 ? "Mod998244353" : "Mod1000000007";
   const onclick = async () => {
     if (op === undefined) {
       setState((state) => {
@@ -226,7 +221,7 @@ export function DivButton({
       });
       setOp("Divide");
     } else {
-      const res = await calc({ op, lhs, rhs: state, modulo });
+      const res = await calc({ op, lhs, rhs: state, mod });
       setLhs(res.toString());
       setState("0");
       setOp("Divide");

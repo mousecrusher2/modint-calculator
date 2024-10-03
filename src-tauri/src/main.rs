@@ -3,12 +3,6 @@
 
 use ac_library::{ModInt1000000007, ModInt998244353, Modulus, StaticModInt};
 
-// Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-#[tauri::command]
-fn greet(name: &str) -> String {
-    format!("Hello, {}! You've been greeted from Rust!", name)
-}
-
 #[derive(serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, Debug)]
 enum Operation {
     Add,
@@ -19,7 +13,9 @@ enum Operation {
 
 #[derive(serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, Debug)]
 enum Modulo {
+    #[serde(rename = "998244353")]
     Mod998244353 = 998244353,
+    #[serde(rename = "1000000007")]
     Mod1000000007 = 1000000007,
 }
 
@@ -52,7 +48,7 @@ fn internal_calc<M: Modulus>(op: Operation, lhs: StaticModInt<M>, rhs: StaticMod
 
 fn main() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![greet, calc])
+        .invoke_handler(tauri::generate_handler![calc])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
