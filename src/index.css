@@ -30,7 +30,7 @@ body {
     width: 100%;
     border: min(0.3vw, 0.3vh) solid rgb(191, 191, 191);
     margin: 0%;
-    font-size: min(21vw, 11vh);
+    font-size: calc(min(21vw, 11vh) * 0.8);
     border-radius: min(2vw, 2vh);
     text-align: center;
     box-shadow: 0 0 min(1vw, 1vh) min(0.3vw, 0.3vh) rgba(0, 0, 0, 0.127);
