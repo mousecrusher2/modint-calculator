@@ -64,3 +64,21 @@ body {
 .cell {
     padding: min(0.5vw, 0.5vh);
 }
+
+@media (hover:hover) {
+    .pad:hover {
+        filter: brightness(0.98);
+    }
+
+    .mod:hover {
+        filter: brightness(0.98);
+    }
+}
+
+.pad:active {
+    filter: brightness(0.93);
+}
+
+.mod:active {
+    filter: brightness(0.93);
+}
