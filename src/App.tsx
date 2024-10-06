@@ -3,58 +3,42 @@ import {
   EqualButton,
   MinusButton,
   MulButton,
-  OneNineButton,
   PlusButton,
-  ZeroButton,
   ModSwitchButton,
   ClearButton,
   DivButton,
+  NumberButton,
 } from "./components/pad";
 import { Display } from "./components/display";
-import { Mod } from "./modulo";
-import { Operation } from "./calc";
+import { Mod } from "./calc";
 
 function App() {
-  const [state, setState] = useState("0");
+  const [disp, setDisp] = useState(0);
   const [mod, setMod] = useState(Mod.Mod998244353);
-  const [lhs, setLhs] = useState("");
-  const [op, setOp] = useState(undefined as undefined | Operation);
   return (
     <div className="fill">
       <div className="dispblock">
-        <Display s={state} />
+        <Display s={disp} />
       </div>
       <div className="padarea">
         <table className="tb">
           <tbody>
-            <tr>
+            <tr className="gyou">
               <td colSpan={2} className="cell">
-                <ModSwitchButton mod={mod} setMod={setMod} />
+                <ModSwitchButton mod={mod} setMod={setMod} setDisp={setDisp} />
               </td>
               <td className="cell">
-                <ClearButton
-                  setLhs={setLhs}
-                  setState={setState}
-                  setOp={setOp}
-                />
+                <ClearButton setDisp={setDisp} />
               </td>
               <td className="cell">
-                <DivButton
-                  lhs={lhs}
-                  setLhs={setLhs}
-                  state={state}
-                  setState={setState}
-                  op={op}
-                  setOp={setOp}
-                  mod={mod}
-                />
+                <DivButton setDisp={setDisp} />
               </td>
             </tr>
             {[1, 4, 7].map((n) => (
-              <tr key={n}>
+              <tr key={n} className="gyou">
                 {[n, n + 1, n + 2].map((m) => (
                   <td key={m} className="cell">
-                    <OneNineButton n={m} setstate={setState} />
+                    <NumberButton n={m} setDisp={setDisp} />
                   </td>
                 ))}
                 {(() => {
@@ -62,43 +46,19 @@ function App() {
                     case 1:
                       return (
                         <td className="cell">
-                          <MulButton
-                            lhs={lhs}
-                            setLhs={setLhs}
-                            state={state}
-                            setState={setState}
-                            op={op}
-                            setOp={setOp}
-                            mod={mod}
-                          />
+                          <MulButton setDisp={setDisp} />
                         </td>
                       );
                     case 4:
                       return (
                         <td className="cell">
-                          <MinusButton
-                            lhs={lhs}
-                            setLhs={setLhs}
-                            state={state}
-                            setState={setState}
-                            op={op}
-                            setOp={setOp}
-                            mod={mod}
-                          />
+                          <MinusButton setDisp={setDisp} />
                         </td>
                       );
                     case 7:
                       return (
                         <td className="cell">
-                          <PlusButton
-                            lhs={lhs}
-                            setLhs={setLhs}
-                            state={state}
-                            setState={setState}
-                            op={op}
-                            setOp={setOp}
-                            mod={mod}
-                          />
+                          <PlusButton setDisp={setDisp} />
                         </td>
                       );
                   }
@@ -107,18 +67,10 @@ function App() {
             ))}
             <tr>
               <td colSpan={3} className="cell">
-                <ZeroButton setstate={setState} />
+                <NumberButton n={0} setDisp={setDisp} />
               </td>
               <td className="cell">
-                <EqualButton
-                  lhs={lhs}
-                  setLhs={setLhs}
-                  state={state}
-                  setState={setState}
-                  op={op}
-                  setOp={setOp}
-                  mod={mod}
-                />
+                <EqualButton setDisp={setDisp} />
               </td>
             </tr>
           </tbody>

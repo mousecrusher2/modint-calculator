@@ -35,7 +35,8 @@ body {
     text-align: center;
     box-shadow: 0 0 min(1vw, 1vh) min(0.3vw, 0.3vh) rgba(0, 0, 0, 0.127);
     padding: 0;
-    font-family: monospace;
+    font-family: 'Nunito Sans Variable', sans-serif;
+    font-stretch: 115%;
 }
 
 .mod {
@@ -43,11 +44,13 @@ body {
     width: 100%;
     border: min(0.3vw, 0.3vh) solid rgb(191, 191, 191);
     margin: 0%;
-    font-size: min(7.5vw, 11vh);
+    font-size: min(9vw, 8.8vh);
     border-radius: min(2vw, 2vh);
     text-align: center;
     box-shadow: 0 0 min(1vw, 1vh) min(0.3vw, 0.3vh) rgba(0, 0, 0, 0.127);
     padding: 0;
+    font-family: 'Nunito Sans Variable', sans-serif;
+    font-stretch: 50%;
 }
 
 .npad {
@@ -63,6 +66,11 @@ body {
 
 .cell {
     padding: min(0.5vw, 0.5vh);
+}
+
+
+.gyou {
+    height: 20%;
 }
 
 @media (hover:hover) {

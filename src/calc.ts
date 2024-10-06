@@ -1,7 +1,22 @@
 import { invoke } from "@tauri-apps/api/core";
-import { Mod } from "./modulo";
 
-export type Operation = "Add" | "Subtract" | "Multiply" | "Divide";
-export async function calc({ op, lhs, rhs, mod }: { op: Operation; lhs: string; rhs: string; mod: Mod }): Promise<string> {
-  return await invoke("calc", { op, lhs, rhs, modulo: mod });
+export type Operation = "Add" | "Subtract" | "Multiply" | "Divide" | "Equal" | "Clear" | "FlipMod" | { Num: number };
+
+export type State = {
+  disp: number;
+  modulo: number;
+}
+
+export const enum Mod {
+  Mod998244353 = 998244353,
+  Mod1000000007 = 1000000007,
+}
+
+export async function sendEvent(op: Operation): Promise<number> {
+  const state: State = await invoke("send_event", { op });
+  return state.disp;
+}
+
+export async function sendModEvent(): Promise<State> {
+  return await invoke("send_event", { op: "FlipMod" });
 }
